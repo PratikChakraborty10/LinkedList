@@ -50,3 +50,49 @@ Node* reverse(Node* head){
     head = prev;
     return head;
 }
+bool isPalindrome(Node *head)
+{
+    //Write your code here
+    if(head==NULL)
+        return true;
+    Node* temp1 = head;
+    Node* temp2 = NULL;
+    Node* head2 = NULL;
+    int len = lenght(head);
+    int mid= len/2;
+    if(len==1){
+        return true;
+    }
+    for(int i=0;i<mid-1;i++){
+        temp1=temp1->next;
+    }
+    if(len%2==0){
+        head2 = temp1->next;
+    }
+    else{
+        head2 = temp1;
+    }
+    
+    head2 = reverse(head2);
+    temp2=head2;
+    temp1=head;
+    while(temp1!=NULL&&temp2!=NULL){
+        if(temp1->data!=temp2->data){
+            return false;
+        }
+        else{
+            temp1=temp1->next;
+            temp2=temp2->next;
+        }
+        
+    }
+    return true;
+}
+int main() {
+    Node *head = takeInput();
+    bool ans = isPalindrome(head);
+    if(ans)
+    cout << "true" << endl;
+    else
+    cout << "false" << endl;
+}
