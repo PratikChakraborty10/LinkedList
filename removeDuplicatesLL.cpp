@@ -10,6 +10,7 @@ class Node {
             next=null;
         }
 };
+// input function
 Node *takeInput() {
     int data;
     cin >> data;
